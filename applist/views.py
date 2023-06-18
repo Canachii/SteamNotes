@@ -3,7 +3,7 @@ from django.db.models import F, Q
 from django.shortcuts import render
 from django.views import generic
 
-from app.models import App, Rank
+from applist.models import App, Rank
 from datetime import datetime
 import requests
 

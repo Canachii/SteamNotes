@@ -6,7 +6,7 @@ import requests
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "steamnotes.settings")
 django.setup()
 from django.db import connection
-from app.models import Rank, App
+from applist.models import Rank, App
 
 # db 테이블 초기화
 with connection.cursor() as cursor:
