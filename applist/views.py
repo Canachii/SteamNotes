@@ -1,5 +1,5 @@
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
-from django.db.models import F, Q
+from django.db.models import Q
 from django.shortcuts import render
 from django.views import generic
 
@@ -32,7 +32,7 @@ def update_db(object_list):
 
 # Create your views here.
 def index(request):
-    object_list = App.objects.all()
+    object_list = App.objects.order_by('?')
     paginator = Paginator(object_list, 10)
     page = request.GET.get('page', 1)
     page_obj = paginator.get_page(page)
@@ -62,7 +62,7 @@ def search(request):
 
 
 def sale(request):
-    object_list = App.objects.order_by(F('discount_percent').desc(nulls_last=True))
+    object_list = App.objects.filter(~Q(discount_percent=0) & Q(discount_percent__isnull=False))
     paginator = Paginator(object_list, 10)
     page = request.GET.get('page', 1)
     page_obj = paginator.get_page(page)

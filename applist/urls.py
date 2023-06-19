@@ -21,8 +21,8 @@ from applist import views
 from applist.views import *
 
 urlpatterns = [
-    path('', views.index, name='index'),
-    path('sale', views.sale, name='sale'),
+    path('games', views.index, name='index'),
+    path('', views.sale, name='sale'),
     path('rank', views.popular, name='rank'),
     path('next', NextSale.as_view(), name='next'),
     path('search', views.search, name='search'),
